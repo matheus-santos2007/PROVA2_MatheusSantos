@@ -48,7 +48,7 @@ label {
     margin-bottom: 5px;
     display: block;
 }
-
+input[type="tel"],
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -159,6 +159,7 @@ tr:hover {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
+
 /* Links */
 a {
     color: #86b2ff;
@@ -195,6 +196,40 @@ a:hover {
     background: rgba(90, 225, 180, 0.18);
     color: #5ae1b4;
     border: 1px solid #5ae1b4;
+}
+
+/*Tabela scroll*/
+/* Container da tabela com rolagem */
+.table-scroll {
+    max-height: 400px; /* Altura máxima antes de aparecer a rolagem */
+    overflow-y: auto;  /* Habilita rolagem vertical */
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+/* Mantém o cabeçalho fixo durante a rolagem */
+.table-scroll thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 10;
+}
+
+/* Estilos básicos da tabela */
+.table-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-scroll th, 
+.table-scroll td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-scroll th {
+    background-color: #f1f1f1;
 }
 
 /* Responsivo */

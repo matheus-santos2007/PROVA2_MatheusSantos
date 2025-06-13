@@ -47,7 +47,10 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscas Cliente</title>
     <link rel="stylesheet" href="crud.css">
+    <!-- Link Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
+
 <body>
     <h2 style="font-size: 40px;">Matheus Etelvino dos Santos</h2>
     <h2>Lista de Clientes</h2>
@@ -61,31 +64,46 @@ $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </form>
 
     <?php if(!empty ($clientes)): ?>
-        <table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Perfil</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($clientes as $cliente): ?>
-        <tr>
-            <td><?=htmlspecialchars($cliente['id_cliente']) ?></td>
-            <td><?=htmlspecialchars($cliente['nome_cliente']) ?></td>
-            <td><?=htmlspecialchars($cliente['email']) ?></td>
-            <td><?=htmlspecialchars($cliente['id_funcionario_responsavel']) ?></td>
-            <td>
-                <a href="alterar_cliente.php?id=<?=htmlspecialchars($cliente['id_cliente']) ?>">Alterar</a>
-                <a href="excluir_cliente.php?id=<?=htmlspecialchars($cliente['id_cliente']) ?>" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        <div class="tabela-scroll">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Endereço</th>
+                        <th>Perfil</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($clientes as $cliente): ?>
+                <tr>
+                    <td><?=htmlspecialchars($cliente['id_cliente']) ?></td>
+                    <td><?=htmlspecialchars($cliente['nome_cliente']) ?></td>
+                    <td><?=htmlspecialchars($cliente['telefone']) ?></td>
+                    <td><?=htmlspecialchars($cliente['email']) ?></td>
+                    <td><?=htmlspecialchars($cliente['endereco']) ?></td>
+                    <td><?=htmlspecialchars($cliente['id_funcionario_responsavel']) ?></td>
+                    <td>
+                        <a href="alterar_cliente.php?id=<?=htmlspecialchars($cliente['id_cliente']) ?>" 
+                           title="Alterar" 
+                           style="margin-right: 10px; color: #007bff; font-size: 18px;">
+                           <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="excluir_cliente.php?id=<?=htmlspecialchars($cliente['id_cliente']) ?>" 
+                           onclick="return confirm('Tem certeza que deseja excluir este cliente?')" 
+                           title="Excluir" 
+                           style="color: #dc3545; font-size: 18px;">
+                           <i class="bi bi-trash-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 <?php else: ?>
     <p>Nenhum cliente encontrado.</p>
 <?php endif; ?>
