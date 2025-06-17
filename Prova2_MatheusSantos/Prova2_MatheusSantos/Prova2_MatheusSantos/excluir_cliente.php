@@ -40,7 +40,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <meta charset="UTF-8">
     <title>Excluir Cliente</title>
     <link rel="stylesheet" href="crud.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     <h2 style="font-size: 40px;">Matheus Etelvino dos Santos</h2>
@@ -62,12 +61,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <td><?= htmlspecialchars($cliente['email']) ?></td>
                     <td><?= htmlspecialchars($cliente['id_funcionario_responsavel']) ?></td>
                     <td>
-                    <a href="excluir_cliente.php?id=<?=htmlspecialchars($cliente['id_cliente']) ?>"onclick="return confirm('Tem certeza que deseja excluir este cliente?')" 
-                           title="Excluir" 
-                           style="color: #dc3545; font-size: 18px;">
-                           <i class="bi bi-trash-fill"></i>
-                        </a>
-                        
+                        <a href="excluir_cliente.php?id=<?= htmlspecialchars($cliente['id_cliente']) ?>" onclick="return confirm('Tem certeza que deseja excluir este cliente?')">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
